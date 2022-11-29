@@ -1,0 +1,57 @@
+@mixin fontReadex {
+  font-family: 'Readex Pro', Arial, Helvetica, sans-serif;
+}
+
+@mixin headingDisplay($color: $blackColor) {
+  @include fontReadex;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 4.8rem;
+  line-height: 6.0rem;
+  color: $color;
+}
+
+@mixin heading1($color: $blackColor) {
+  @include fontReadex;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 4.0rem;
+  color: $color;
+}
+
+@mixin heading2($color: $blackColor) {
+  @include fontReadex;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2.8rem;
+  line-height: 3.5rem;
+  color: $color;
+}
+
+@mixin headline($color: $grayColor, $bold: 500) {
+  @include fontReadex;
+  font-style: normal;
+  font-weight: $bold;
+  font-size: 2.0rem;
+  line-height: 2.5rem;
+  color: $color;
+}
+
+@mixin textTitle($color: $grayColor) {
+  @include fontReadex;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2.2rem;
+  line-height: 2.8rem;
+  color: $color;
+}
+
+@mixin textBody($color: $grayColor) {
+  @include fontReadex;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  color: $color;
+}

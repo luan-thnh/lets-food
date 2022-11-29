@@ -1,0 +1,192 @@
+.cart {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    bottom: -4.6rem;
+    right: 0.2rem;
+    z-index: -1;
+    content: '';
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+    background-color: $whiteColor;
+    transform: translateY(1.5rem);
+    box-shadow: 0 0.5rem 1rem rgba($grayColor, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+  }
+
+  &.show::after {
+    transform: translateY(0) rotate(45deg);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__icon {
+    position: relative;
+    span {
+      @include position($top: 0.8rem, $right: 0.8rem);
+      @include dFlex;
+
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      background-color: $yellowColor;
+      color: $blackColor;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.9rem;
+      line-height: 1.1rem;
+
+      p {
+        width: 100%;
+        height: 100%;
+        line-height: 1.2rem;
+        text-align: center;
+      }
+
+      @include responsive($large) {
+        @include position($top: 0.4rem, $right: 0.4rem);
+      }
+    }
+  }
+
+  &__group {
+    width: 55rem;
+    padding: 3.2rem 1.6rem;
+    padding-top: 5.6rem;
+    position: absolute;
+    top: 7rem;
+    right: -2.6rem;
+    z-index: 4;
+    border-radius: 1.5rem;
+    background-color: $whiteColor;
+    box-shadow: 0 0.1rem 0.5rem rgba($grayColor, 0.2);
+    z-index: 2;
+    overflow: hidden;
+    transform: scale(0.25);
+    transform-origin: calc(100% - 3.2rem) top;
+    will-change: opacity, transform;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+  }
+  &__list {
+    padding: 3.2rem;
+    max-height: 35rem;
+    overflow-y: scroll;
+  }
+  &__item {
+    @include dFlex(flex-start, $gap: 3.2rem);
+
+    &:not(:last-child) {
+      padding-bottom: 2.4rem;
+    }
+
+    &--name {
+      flex: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      @include textBody;
+      font-weight: 600;
+    }
+
+    &--price {
+      padding-top: 0.4rem;
+    }
+
+    &--btn {
+      padding: 0.4rem;
+      background-color: transparent;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+
+      &:active {
+        transform: scale(1);
+      }
+    }
+
+    &--more {
+      color: $grayColor;
+    }
+
+    &--trash {
+      color: $redColor;
+    }
+  }
+  &__item-thumbnail {
+    width: 8.8rem;
+    flex: 1;
+
+    img {
+      width: 100%;
+      border-radius: 0.5rem;
+      object-fit: cover;
+    }
+
+    @include responsive($small) {
+      width: 4.8rem;
+
+      img {
+        width: 6.5rem;
+      }
+    }
+  }
+
+  &__item-quantity {
+    @include dFlex($gap: 1.6rem);
+  }
+
+  &__btn {
+    margin-top: 3.2rem;
+    text-align: center;
+
+    button {
+      @include btnPrimary;
+    }
+  }
+
+  &__empty {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__item-content {
+    max-width: 280px;
+    width: 100%;
+
+    @include responsive($small) {
+      max-width: 150px;
+    }
+  }
+
+  // Mobile
+  @include responsive($large) {
+    &__group {
+      max-width: 55rem;
+      width: 100%;
+      @include position(fixed, calc($heightHeader - 1.7rem), $left: 0);
+      transform-origin: calc(3.2rem) top;
+      overflow-x: hidden;
+    }
+
+    &__empty {
+      max-width: 25.5rem;
+      width: 100%;
+    }
+  }
+}

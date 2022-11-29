@@ -1,0 +1,57 @@
+@mixin btnPrimary($color: $blackColor, $background: $yellowColor) {
+  display: inline-block;
+  padding: 1.6rem 3.2rem;
+  background: $background;
+  border-radius: 5rem;
+  font-family: 'Readex Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  border: 0.1rem solid transparent;
+  line-height: 1.8rem;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+  color: $color;
+
+  &:hover {
+    transform: translateY(-0.3rem) scale(1.025);
+    box-shadow: 0rem 0.4rem 1.2rem rgba(29, 29, 29, 0.15);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-0.1rem) scale(1);
+    box-shadow: 0rem 0.2rem 0.6rem rgba(29, 29, 29, 0.15);
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    background-color: $background;
+    border: 0.1rem solid transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  &.disable {
+    color: $background;
+    border: 0.1rem solid $background;
+    background-color: transparent;
+    pointer-events: none;
+
+    &::after {
+      background-color: transparent;
+    }
+  }
+}

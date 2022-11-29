@@ -1,0 +1,33 @@
+@mixin position(
+  $pos: absolute,
+  $top: auto,
+  $right: auto,
+  $left: auto,
+  $bottom: auto,
+  $zIndex: 1
+) {
+  position: $pos;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $zIndex;
+}
+
+@mixin posAbsCenter(
+  $top: auto,
+  $right: auto,
+  $bottom: auto,
+  $left: 50%,
+  $x: -50%,
+  $y: -50%,
+  $zIndex: 1
+) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  left: $left;
+  bottom: $bottom;
+  transform: translate($x, $y);
+  z-index: $zIndex;
+}

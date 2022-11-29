@@ -1,0 +1,11 @@
+@mixin dFlex($just: space-between, $ali: center, $gap: 0) {
+  display: flex;
+  justify-content: $just;
+  align-items: $ali;
+  gap: $gap;
+}
+
+@mixin dFlexCol {
+  display: flex;
+  flex-direction: column;
+}

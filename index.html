@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      property="og:image"
+      content="https://luan-thanhh.github.io/lets-food/assets/img/thumbnail.jpg"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      rel="icon"
+      href="./assets/img/favicon.svg"
+      type="image/gif"
+      sizes="16x16"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Let's Food</title>
+  </head>
+  <body>
+    <div class="home">
+      <!-- Header -->
+      <header id="header" class="header">
+        <div class="header__logo">
+          <a href="#">
+            <img src="./assets/img/logo.svg" alt="Logo image" />
+          </a>
+        </div>
+
+        <div id="menu" class="header__menu">
+          <a href="#" class="header__menu-link">Home</a>
+          <a href="#" class="header__menu-link">Menu</a>
+          <a href="#" class="header__menu-link">How it works</a>
+          <a href="#" class="header__menu-link">About</a>
+          <a href="#" class="header__menu-link">Contact</a>
+        </div>
+
+        <input
+          type="text"
+          id="input-search"
+          class="header__input-search"
+          placeholder="Search keyword or food..."
+        />
+
+        <div class="header__action">
+          <a
+            id="search"
+            href="#"
+            class="header__action-icon header__action-search"
+          >
+            <img src="./assets/img/search.svg" alt="Search icon" />
+          </a>
+
+          <div id="cart" class="cart">
+            <a id="cart__icon" href="#!" class="header__action-icon cart__icon">
+              <img src="./assets/img/cart.svg" alt="Cart icon" />
+              <span id="cart-quantity"><p>0</p></span>
+            </a>
+
+            <div id="cart-group" class="cart__group">
+              <div id="cart-list" class="cart__list">
+                <!-- Empty cart -->
+                <img
+                  id="cart-empty"
+                  class="cart__empty"
+                  src="./assets/img/empty-cart.jpg"
+                  alt=""
+                />
+              </div>
+
+              <div class="cart__btn">
+                <button>Buy</button>
+              </div>
+            </div>
+          </div>
+
+          <button id="btn-login" class="header__action-sign-in">
+            <img src="./assets/img/sign-in.svg" alt="Sign in icon" />
+            Sign in
+          </button>
+        </div>
+
+        <!-- Menu Mobile -->
+        <div class="header__menu-mobile">
+          <div class="header__icon-mobile">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="header__list-mobile">
+            <a href="#" class="header__menu-link">Home</a>
+            <a href="#" class="header__menu-link">Menu</a>
+            <a href="#" class="header__menu-link">How it works</a>
+            <a href="#" class="header__menu-link">About</a>
+            <a href="#" class="header__menu-link">Contact</a>
+            <button id="btn-login-mobile" class="header__action-sign-in-mobile">
+              <img src="./assets/img/sign-in.svg" alt="Sign in icon" />
+              <p>Sign in</p>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main -->
+      <main id="main" class="home__main">
+        <!-- Introduce -->
+        <div class="home__introduce container-full">
+          <div class="home__introduce-content">
+            <h3 class="home__introduce--heading">
+              Be The Fastest In Delivery Your <span>Food</span>
+            </h3>
+            <p class="home__introduce--text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
+              aliquam, purus sit amet
+            </p>
+            <button class="home__introduce--btn">Get Started</button>
+          </div>
+
+          <div class="home__introduce-picture">
+            <img src="./assets/img/food-review.png" alt="Food review" />
+          </div>
+
+          <div class="shape shape1">
+            <img src="./assets/img/shape.png" alt="" />
+          </div>
+          <div class="shape shape2">
+            <img src="./assets/img/shape.png" alt="" />
+          </div>
+          <div class="ellipse ellipse1">
+            <img src="./assets/img/ellipse.png" alt="" />
+          </div>
+          <div class="ellipse ellipse2">
+            <img src="./assets/img/ellipse.png" alt="" />
+          </div>
+          <div class="ellipse ellipse3">
+            <img src="./assets/img/ellipse.png" alt="" />
+          </div>
+          <div class="ellipse ellipse4">
+            <img src="./assets/img/ellipse.png" alt="" />
+          </div>
+        </div>
+
+        <!-- Serve -->
+        <div class="home__serve container">
+          <p class="home__serve--title">How it works</p>
+          <h4 class="home__serve--heading">What We Serve</h4>
+          <p class="home__serve--desc">
+            Product Quality Is Our Priority, And Always Guarantees Halal And
+            Safety Until It Is In Your Hands.
+          </p>
+
+          <div class="home__serve-list">
+            <div class="home__serve-item">
+              <div class="home__serve-item-img">
+                <img src="./assets/img/order.png" alt="Order" />
+              </div>
+
+              <h5 class="home__serve-item--heading">Easy To Order</h5>
+              <p class="home__serve-item--text">
+                You only order through the app
+              </p>
+            </div>
+            <div class="home__serve-item">
+              <div class="home__serve-item-img">
+                <img src="./assets/img/delivery.png" alt="Delivery" />
+              </div>
+
+              <h5 class="home__serve-item--heading">Fastest Delivery</h5>
+              <p class="home__serve-item--text">Delivery will be on time</p>
+            </div>
+            <div class="home__serve-item">
+              <div class="home__serve-item-img">
+                <img src="./assets/img/courier.png" alt="Courier" />
+              </div>
+
+              <h5 class="home__serve-item--heading">Best Quality</h5>
+              <p class="home__serve-item--text">
+                The best quality of food for you
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu -->
+        <div class="home__menu container">
+          <p class="home__menu--title">Our menu</p>
+          <h4 class="home__menu--heading">Our Popular Menu</h4>
+          <p class="home__menu--desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam
+          </p>
+
+          <div id="card-list" class="home__card-list"></div>
+
+          <button id="btn-menu" class="home__menu--btn">More Menu</button>
+        </div>
+
+        <!-- modal-menu -->
+        <div class="home__menu-modal"></div>
+
+        <!-- About -->
+        <div class="home__about container">
+          <div class="home__about-picture">
+            <img src="./assets/img/food-about.png" alt="" />
+          </div>
+
+          <div class="home__about-content">
+            <p class="home__about--title">What the say</p>
+            <h5 class="home__about--heading">
+              What Our Customers Say About Us
+            </h5>
+
+            <div class="home__about-slide">
+              <div class="home__about-slideshow">
+                <div class="swiper mySwiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="home__about-comment">
+                        <div class="home__comment-user">
+                          <div class="home__comment-avatar">
+                            <img src="./assets/img/avatar-1.png" alt="" />
+                          </div>
+
+                          <div class="home__comment-right">
+                            <h5 class="home__comment-name">Naura Silvana</h5>
+                            <div class="home__comment-rate">
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                            </div>
+                          </div>
+                        </div>
+
+                        <p class="home__about-comment--desc">
+                          “Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit ut aliquam, purus sit amet luctus venenatis.”
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="home__about-comment">
+                        <div class="home__comment-user">
+                          <div class="home__comment-avatar">
+                            <img src="./assets/img/avatar-2.png" alt="" />
+                          </div>
+
+                          <div class="home__comment-right">
+                            <h5 class="home__comment-name">Azura</h5>
+                            <div class="home__comment-rate">
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                            </div>
+                          </div>
+                        </div>
+
+                        <p class="home__about-comment--desc">
+                          “Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit ut aliquam, purus sit amet luctus venenatis.”
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="home__about-comment">
+                        <div class="home__comment-user">
+                          <div class="home__comment-avatar">
+                            <img src="./assets/img/avatar-1.png" alt="" />
+                          </div>
+
+                          <div class="home__comment-right">
+                            <h5 class="home__comment-name">Naura Silvana</h5>
+                            <div class="home__comment-rate">
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                              <i
+                                id="star-empty"
+                                class="home__comment-star home__comment-star--boder fa-regular fa-star"
+                              ></i>
+                              <i
+                                id="star-not-empty"
+                                class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+                              ></i>
+                            </div>
+                          </div>
+                        </div>
+
+                        <p class="home__about-comment--desc">
+                          “Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit ut aliquam, purus sit amet luctus venenatis.”
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sign Up -->
+        <div id="background-scroll" class="home__register container">
+          <h3 class="home__register--heading">
+            Join our member and get discount up to 50%
+          </h3>
+          <button id="btn-register" class="home__register--btn">Sign Up</button>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer id="footer" class="footer container-full">
+        <div class="footer__group">
+          <div class="footer__left">
+            <div class="footer__logo">
+              <img src="./assets/img/logo.svg" alt="Logo image" />
+            </div>
+            <p>Jalan Semangka Raya, Telaga Murni,Cikarang Barat, Kab. Bekasi</p>
+            <div class="footer__social">
+              <a href="#!"><img src="./assets/img/instagram.svg" alt="" /></a>
+              <a href="#!"><img src="./assets/img/facebook.svg" alt="" /></a>
+              <a href="#!"><img src="./assets/img/twitter.svg" alt="" /></a>
+            </div>
+          </div>
+
+          <div class="footer__row">
+            <div class="footer__col">
+              <h4 class="footer--heading">Company</h4>
+              <div class="footer__list">
+                <a href="#!" class="footer__link">About Us</a>
+                <a href="#!" class="footer__link">Career</a>
+                <a href="#!" class="footer__link">How It Work</a>
+              </div>
+            </div>
+            <div class="footer__col">
+              <h4 class="footer--heading">Policy</h4>
+              <div class="footer__list">
+                <a href="#!" class="footer__link">FAQ</a>
+                <a href="#!" class="footer__link">Privacy</a>
+                <a href="#!" class="footer__link">Shipping</a>
+              </div>
+            </div>
+            <div class="footer__col">
+              <h4 class="footer--heading">Get In Touch</h4>
+              <div class="footer__list">
+                <a href="#!" class="footer__link">+62 896 7311 2766</a>
+                <a href="#!" class="footer__link">food@example.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="footer__bottom-text">© 2022 Let’sFood. ALL RIGHT RESERVED.</p>
+
+        <div class="ellipse1">
+          <img src="./assets/img/ellipse.png" alt="" />
+        </div>
+        <div class="ellipse2">
+          <img src="./assets/img/ellipse.png" alt="" />
+        </div>
+        <div class="ellipse3">
+          <img src="./assets/img/ellipse.png" alt="" />
+        </div>
+      </footer>
+
+      <!-- Model -->
+      <div id="model" class="model">
+        <div class="model__login">
+          <div class="model__register">
+            <div>
+              <h2>Have A Account?</h2>
+              <button class="model__btn-login">Login</button>
+            </div>
+            <div>
+              <h2>Create A Account?</h2>
+
+              <button class="model__btn-register">Sign Up</button>
+            </div>
+          </div>
+
+          <div class="model__back-info">
+            <div class="model__img-back-grey">
+              <!-- <img src="./assets/img/bg-model.jfif" alt="" /> -->
+            </div>
+          </div>
+          <div class="model__forms">
+            <div class="model__img-back">
+              <!-- <img src="./assets/img/bg-model.jpg" alt="" /> -->
+            </div>
+            <div class="model__form-login">
+              <h2>LOGIN</h2>
+              <input type="text" placeholder="Email" />
+              <input type="password" placeholder="Password" />
+              <button class="model__btn-login">Sign In</button>
+              <a href="#!" id="btn-out-form"
+                ><i class="fa-solid fa-arrow-left"></i
+              ></a>
+            </div>
+
+            <div class="model__form-register">
+              <h2>REGISTER</h2>
+              <input type="text" placeholder="Email" />
+              <input type="text" placeholder="User" />
+              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Confirm Password" />
+              <button class="model__btn-register">Sign Up</button>
+              <a href="#!" id="btn-out-form"
+                ><i class="fa-solid fa-arrow-left"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="overlay"></div>
+
+      <div class="loading">
+        <div class="spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/app.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper('.mySwiper', {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    </script>
+  </body>
+</html>
