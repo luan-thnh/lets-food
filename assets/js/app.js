@@ -242,11 +242,11 @@ function modalContainer(name, desc, price, img, id, rate) {
                 <button class="home__menu-modal--buyNow">Buy Now</button>
               </div>
             </div>
-            <div
+            <a href="#!"
               class="home__menu-modal--close" onclick = "closeAndOpen()";
             >
               <i class="fa-solid fa-xmark"></i>
-            </div>
+            </a>
           </div>`;
 }
 
