@@ -1,46 +1,146 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
+const _$ = document.querySelector.bind(document);
+const _$$ = document.querySelectorAll.bind(document);
 
-const btnSearch = $('#search');
-const inputSearch = $('#input-search');
-const menu = $('#menu');
-const main = $('#main');
+const btnSearch = _$('#search');
+const inputSearch = _$('#input-search');
+const menu = _$('#menu');
+const main = _$('#main');
 
-const cardList = $('#card-list');
-const cardFood = $('#card-food');
-const btnMenu = $('#btn-menu');
+const cardList = _$('#card-list');
+const cardFood = _$('#card-food');
+const btnMenu = _$('#btn-menu');
 
-const cart = $('#cart');
-const cartBtn = $('#cart__icon');
-const cartGroup = $('#cart-group');
-const cartList = $('#cart-list');
-const cartEmpty = $('#cart-empty');
+const cart = _$('#cart');
+const cartBtn = _$('#cart__icon');
+const cartGroup = _$('#cart-group');
+const cartList = _$('#cart-list');
+const cartEmpty = _$('#cart-empty');
 
-const btnLogin = $('#btn-login');
-const btnLoginMobile = $('#btn-login-mobile');
-const btnRegister = $('#btn-register');
+const btnLogin = _$('#btn-login');
+const btnLoginMobile = _$('#btn-login-mobile');
+const btnRegister = _$('#btn-register');
 
-const overlay = $('.overlay');
-const spinner = $('.spinner');
+const overlay = _$('.overlay');
+const spinner = _$('.spinner');
 
-const model = $('#model');
-const modelForm = $('.model__forms');
-const modelFormLogin = $('.model__form-login');
-const modelFormRegister = $('.model__form-register');
-const modelBtnLogin = $$('.model__btn-login');
-const modelBtnRegister = $$('.model__btn-register');
-const btnOutForm = $$('#btn-out-form');
+const model = _$('#model');
+const modelForm = _$('.model__forms');
+const modelFormLogin = _$('.model__form-login');
+const modelFormRegister = _$('.model__form-register');
+const modelBtnLogin = _$$('.model__btn-login');
+const modelBtnRegister = _$$('.model__btn-register');
+const btnOutForm = _$$('#btn-out-form');
 
-const header = $('#header');
-const introduce = $('.home__introduce');
-const bgScroll = $('#background-scroll');
-const elementModal = $('.home__menu-modal');
-const iconMobile = $('.header__icon-mobile');
-const listMobile = $('.header__list-mobile');
-const overlayMobile = $('.header__overlay-mobile');
+const header = _$('#header');
+const introduce = _$('.home__introduce');
+const bgScroll = _$('#background-scroll');
+const elementModal = _$('.home__menu-modal');
+const iconMobile = _$('.header__icon-mobile');
+const listMobile = _$('.header__list-mobile');
+const overlayMobile = _$('.header__overlay-mobile');
+const homeAboutSlide = _$('#home__about-slide');
 
-var count = 0;
-var count2 = 0;
+function handleStarComments(arr) {
+  const groupStarts = _$$('.home__comment-rate');
+
+  groupStarts.forEach((groupStart, index) => {
+    const groupStartArr = Array.prototype.slice
+      .call(groupStart.children)
+      .slice(0, arr[index].rate * 2);
+
+    groupStartArr.forEach((star) => {
+      if (star.classList.contains('home__comment-star--bolder'))
+        star.classList.add('hide');
+
+      if (star.classList.contains('home__comment-star--yellow'))
+        star.classList.add('show');
+    });
+  });
+}
+
+function renderComments(arr) {
+  homeAboutSlide.innerHTML = arr
+    .map(
+      ({ name, avatar, comment, rate }) => `
+      <div class="home__about-comment">
+      <div class="home__comment-user">
+        <div class="home__comment-avatar">
+          <img src="${avatar}" alt="" />
+        </div>
+
+        <div class="home__comment-right">
+          <h5 class="home__comment-name">${name}</h5>
+          <div class="home__comment-rate">
+            <i
+              class="home__comment-star home__comment-star--bolder fa-regular fa-star"
+            ></i>
+            <i
+              class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+            ></i>
+            <i
+              class="home__comment-star home__comment-star--bolder fa-regular fa-star"
+            ></i>
+            <i
+              class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+            ></i>
+            <i
+              class="home__comment-star home__comment-star--bolder fa-regular fa-star"
+            ></i>
+            <i
+              class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+            ></i>
+            <i
+              class="home__comment-star home__comment-star--bolder fa-regular fa-star"
+            ></i>
+            <i
+              class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+            ></i>
+            <i
+              class="home__comment-star home__comment-star--bolder fa-regular fa-star"
+            ></i>
+            <i
+              class="home__comment-star home__comment-star--yellow fa-solid fa-star"
+            ></i>
+          </div>
+        </div>
+      </div>
+
+      <p class="home__about-comment--desc">
+        “${comment}”
+      </p>
+    </div>
+  `
+    )
+    .join('');
+
+  handleStarComments(arr);
+}
+
+function getCommentsAPI() {
+  fetch('https://6378bce27eb4705cf2733ca1.mockapi.io/comments')
+    .then((res) => res.json())
+    .then((data) => {
+      renderComments(data);
+
+      $(document).ready(function () {
+        $('.home__about-slide').slick({
+          autoplay: true,
+          autoplaySpeed: 2000,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          draggable: true,
+          arrows: false,
+          dots: true,
+        });
+      });
+    });
+}
+
+getCommentsAPI();
+
+let count = 0;
+let count2 = 0;
 function removeFoodCart(id) {
   // set lại mảng tăng 1 số lượng chứa id các sản phẩm
   if (arrQuantity.length != 0) {
@@ -63,7 +163,7 @@ function removeFoodCart(id) {
     count = 0;
   }
   document.querySelector(`.cart__item${id}`).remove();
-  let valueCart = $('#cart-quantity');
+  let valueCart = _$('#cart-quantity');
   valueCart.innerHTML = `<p>${quantityCurrent - 1}</p>`;
   quantityCurrent -= 1;
   if (quantityCurrent === 0) {
@@ -92,7 +192,7 @@ function addFoodCart({ name, description, price, rate, thumbnail, id }) {
       <h5 class="cart__item--name">${name}</h5>
       <div class="cart__item-quantity">
         <p class="cart__item--price">${
-          $('.home__menu-modal--price span').innerText
+          _$('.home__menu-modal--price span').innerText
         }</p>
         </div>
   </div>
@@ -134,12 +234,12 @@ let quantityCurrent = 0;
 let arrQuantity = [];
 let checkCart = 0;
 function cartAdd(id) {
-  if ($('.home__modal-mount--input').value == '') {
-    $('.home__modal-mount--input').value = 1;
+  if (_$('.home__modal-mount--input').value == '') {
+    _$('.home__modal-mount--input').value = 1;
   }
   if (arrQuantity.length === 0) {
     arrQuantity.push(id);
-    let valueCart = $('#cart-quantity');
+    let valueCart = _$('#cart-quantity');
     valueCart.innerHTML = `<p>${quantityCurrent + 1}</p>`;
     quantityCurrent += 1;
   } else {
@@ -151,7 +251,7 @@ function cartAdd(id) {
     }
     if (checkCart !== 1) {
       arrQuantity.push(id);
-      $('#cart-quantity').innerHTML = `<p>${quantityCurrent + 1}</p>`;
+      _$('#cart-quantity').innerHTML = `<p>${quantityCurrent + 1}</p>`;
       quantityCurrent += 1;
     }
     checkCart = 0;
@@ -166,36 +266,37 @@ function cartAdd(id) {
 }
 // hàm giảm giá trị so luong
 function decrease(price) {
-  let valueInputMount = $('.home__modal-mount--input').value;
+  let valueInputMount = _$('.home__modal-mount--input').value;
   let newPrice =
-    parseFloat($('.home__menu-modal--price span').innerText.replace(/,/g, '')) -
-    price;
+    parseFloat(
+      _$('.home__menu-modal--price span').innerText.replace(/,/g, '')
+    ) - price;
 
   if (valueInputMount > 1) {
-    $('.home__modal-mount--input').value = parseInt(valueInputMount) - 1;
-    $('.home__menu-modal--price span').innerText = formatNumber(newPrice);
+    _$('.home__modal-mount--input').value = parseInt(valueInputMount) - 1;
+    _$('.home__menu-modal--price span').innerText = formatNumber(newPrice);
   }
 }
 // ham tăng giá trị số lượng
 function increase(price) {
-  let valueInputMount = $('.home__modal-mount--input').value;
+  let valueInputMount = _$('.home__modal-mount--input').value;
   let newPrice = price * (parseInt(valueInputMount) + 1);
 
-  if ($('.home__modal-mount--input').value == '')
-    $('.home__modal-mount--input').value = 1;
+  if (_$('.home__modal-mount--input').value == '')
+    _$('.home__modal-mount--input').value = 1;
 
-  $('.home__modal-mount--input').value = parseInt(valueInputMount) + 1;
-  $('.home__menu-modal--price span').innerText = formatNumber(newPrice);
+  _$('.home__modal-mount--input').value = parseInt(valueInputMount) + 1;
+  _$('.home__menu-modal--price span').innerText = formatNumber(newPrice);
 }
 
 function onblurInputMountModal(price) {
-  let valueInputMount = $('.home__modal-mount--input').value;
+  let valueInputMount = _$('.home__modal-mount--input').value;
   let newPrice = price * parseInt(valueInputMount);
 
-  if ($('.home__modal-mount--input').value == '')
-    $('.home__modal-mount--input').value = 1;
+  if (_$('.home__modal-mount--input').value == '')
+    _$('.home__modal-mount--input').value = 1;
 
-  $('.home__menu-modal--price span').innerText = formatNumber(newPrice);
+  _$('.home__menu-modal--price span').innerText = formatNumber(newPrice);
 }
 //hàm trả về data home__menu-modal-- container
 function modalContainer(name, desc, price, img, id, rate) {
@@ -263,15 +364,15 @@ function showModal(name, desc, price, img, id, rate) {
   elementModal.innerHTML = modalContainer(name, desc, price, img, id, rate);
 
   closeAndOpen();
-  let test = $('.home__modal-rate--group').children;
+  let test = _$('.home__modal-rate--group').children;
   for (let i = 0; i < rate; i++) {
     test[i].classList.add('checked');
   }
 
-  $('.home__modal-mount--input').onkeyup = (e) => {
+  _$('.home__modal-mount--input').onkeyup = (e) => {
     if (e.key === 'Enter' || e.keyCode === 13) {
-      let newPrice = price * $('.home__modal-mount--input').value;
-      $('.home__menu-modal--price span').innerText = formatNumber(newPrice);
+      let newPrice = price * _$('.home__modal-mount--input').value;
+      _$('.home__menu-modal--price span').innerText = formatNumber(newPrice);
     }
   };
 
@@ -363,7 +464,7 @@ loadingAPI(getFood);
 
 // Handle Click Btn Like
 function handleClickBtnLike() {
-  const btnLikes = $$('#card-like');
+  const btnLikes = _$$('#card-like');
 
   btnLikes.forEach(
     (btnLike) =>

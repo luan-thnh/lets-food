@@ -311,6 +311,21 @@
     }
   }
 
+  &__menu-mobile-link {
+    @include heading2;
+    transition: 0.5s;
+
+    &:hover {
+      transform: translateY(-0.3rem) scale(1.025) rotate(5deg);
+      color: $yellowColor;
+    }
+
+    &:active {
+      transform: translateY(-0.1rem) scale(1) rotate(0deg);
+      text-shadow: 0.1rem 0.1rem 0 rgba(29, 29, 29, 0.15);
+    }
+  }
+
   &__action-sign-in-mobile {
     @include btnPrimary;
 

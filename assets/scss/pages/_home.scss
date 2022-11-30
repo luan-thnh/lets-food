@@ -686,9 +686,40 @@
     width: 51.2rem;
     overflow: hidden;
 
-    @include responsive($small) {
-      width: 40rem;
-      margin: 0 auto;
+    .slick-track {
+      @include dFlex(center, $gap: 0.8rem);
+    }
+
+    .slick-dots {
+      display: flex !important;
+      @include dFlex(center, $gap: 0.8rem);
+
+      margin-top: 1.6rem;
+      list-style: none;
+
+      li {
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 50%;
+        background-color: rgba($yellowColor, 0.4);
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: rgba($yellowColor, 0.6);
+          transform: scale(1.25);
+        }
+
+        &.slick-active {
+          background-color: $yellowColor;
+          transform: scale(1.25);
+        }
+      }
+
+      button {
+        text-indent: -9999px;
+        cursor: pointer;
+      }
     }
   }
 
@@ -696,51 +727,6 @@
     @include dFlex(flex-start, $gap: 2.4rem);
     height: 100%;
     width: 100%;
-
-    .swiper {
-      width: 100%;
-      height: 100%;
-    }
-
-    .swiper-slide {
-      font-size: 1.8rem;
-      background: #fff;
-
-      /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-    }
-
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .swiper-pagination-bullet {
-      background-color: rgba($yellowColor, 0.6);
-      transition: 0.3s;
-
-      &:not(.swiper-pagination-bullet-active):hover {
-        background-color: rgba($yellowColor, 0.8);
-        transform: scale(1.3);
-      }
-    }
-
-    .swiper-pagination-bullet-active {
-      background-color: $yellowColor !important;
-    }
   }
 
   &__about-comment {
@@ -794,12 +780,12 @@
   }
 
   &__comment-star {
-    &--boder,
+    &--bolder,
     &--yellow {
       color: $yellowColor;
     }
 
-    &--boder {
+    &--bolder {
       &.hide {
         display: none;
       }
