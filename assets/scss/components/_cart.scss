@@ -168,6 +168,7 @@
   &__item-content {
     max-width: 280px;
     width: 100%;
+    cursor: pointer;
 
     @include responsive($small) {
       max-width: 150px;

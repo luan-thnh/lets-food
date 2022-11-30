@@ -252,4 +252,31 @@
       left: 4.8rem;
     }
   }
+
+  &__form-footer-mobile {
+    @include dFlex($ali: flex-end, $gap: 1.4rem);
+
+    display: none;
+
+    @include responsive($large) {
+      display: flex;
+    }
+
+    h2 {
+      @include textBody($blackColor);
+      text-shadow: none;
+    }
+
+    button {
+      padding: 0;
+      background-color: transparent;
+      @include textBody($yellowColor);
+      text-decoration: underline;
+
+      &::after,
+      &::before {
+        display: none;
+      }
+    }
+  }
 }

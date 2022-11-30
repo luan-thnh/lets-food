@@ -74,7 +74,7 @@ function removeFoodCart(id) {
 // App food in cart list
 var checkFoodAdded = [];
 var checkArr = 0;
-function addFoodCart({ name, thumbnail, id }) {
+function addFoodCart({ name, description, price, rate, thumbnail, id }) {
   const cartItem = document.createElement('div');
   cartItem.classList.add('cart__item');
   cartItem.classList.add(`cart__item${id}`);
@@ -86,7 +86,9 @@ function addFoodCart({ name, thumbnail, id }) {
       alt="${name}"
     />
   </div>  
-  <div class="cart__item-content">
+  <div 
+    class="cart__item-content" 
+    onclick ="showModal('${name}', '${description}', ${price},'${thumbnail}','${id}',${rate})">
       <h5 class="cart__item--name">${name}</h5>
       <div class="cart__item-quantity">
         <p class="cart__item--price">${
@@ -272,6 +274,12 @@ function showModal(name, desc, price, img, id, rate) {
       $('.home__menu-modal--price span').innerText = formatNumber(newPrice);
     }
   };
+
+  if (document.body.clientWidth <= 992 && cart.classList.contains('show')) {
+    cart.classList.remove('show');
+    cartGroup.classList.remove('show');
+    overlay.classList.toggle('show');
+  }
 }
 
 function renderFood(arr) {
