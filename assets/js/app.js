@@ -280,24 +280,24 @@ function decrease(price) {
 // ham tăng giá trị số lượng
 function increase(price) {
   let valueInputMount = _$('.home__modal-mount--input').value;
-  let newPrice = price * (parseInt(valueInputMount) + 1);
 
   if (_$('.home__modal-mount--input').value == '')
     _$('.home__modal-mount--input').value = 1;
 
+  let newPrice = price * (parseInt(valueInputMount) + 1);
   _$('.home__modal-mount--input').value = parseInt(valueInputMount) + 1;
   _$('.home__menu-modal--price span').innerText = formatNumber(newPrice);
 }
 
 function onblurInputMountModal(price) {
-  let valueInputMount = _$('.home__modal-mount--input').value;
-  let newPrice = price * parseInt(valueInputMount);
-
   if (_$('.home__modal-mount--input').value == '')
     _$('.home__modal-mount--input').value = 1;
 
+  let valueInputMount = _$('.home__modal-mount--input').value;
+  let newPrice = price * parseInt(valueInputMount);
   _$('.home__menu-modal--price span').innerText = formatNumber(newPrice);
 }
+
 //hàm trả về data home__menu-modal-- container
 function modalContainer(name, desc, price, img, id, rate) {
   return `
