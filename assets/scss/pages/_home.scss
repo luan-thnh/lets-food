@@ -686,12 +686,20 @@
   &__about-content {
     @include dFlexCol;
     position: relative;
+
+    @include responsive($xSmall) {
+      align-items: center;
+    }
   }
 
   &__about-slide {
     height: 30rem;
     width: 51.2rem;
     overflow: hidden;
+
+    @include responsive($xSmall) {
+      width: 38rem;
+    }
 
     .slick-track {
       @include dFlex(center, $gap: 0.8rem);

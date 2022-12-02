@@ -2312,10 +2312,20 @@ a {
   flex-direction: column;
   position: relative;
 }
+@media (max-width: 416px) {
+  .home__about-content {
+    align-items: center;
+  }
+}
 .home__about-slide {
   height: 30rem;
   width: 51.2rem;
   overflow: hidden;
+}
+@media (max-width: 416px) {
+  .home__about-slide {
+    width: 38rem;
+  }
 }
 .home__about-slide .slick-track {
   display: flex;
