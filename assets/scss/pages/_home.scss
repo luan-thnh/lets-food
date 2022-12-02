@@ -105,9 +105,16 @@
     }
   }
 
+  &__introduce-content {
+    animation: moveInLeft 2s ease-out;
+    animation-fill-mode: backwards;
+  }
+
   &__introduce-picture {
     max-width: 50rem;
     width: 100%;
+    animation: moveInRight 2s ease-out;
+    animation-fill-mode: backwards;
 
     img {
       width: 100%;

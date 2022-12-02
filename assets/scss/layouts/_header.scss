@@ -82,39 +82,91 @@
     }
   }
 
-  &__input-search {
-    @include textBody;
-
-    height: 0;
-    max-width: 0rem;
-    width: 100%;
-    border: 0.2rem solid transparent;
-    border-radius: 10rem;
-    padding-left: 0;
-    opacity: 0;
-    transition: 1s;
-    position: absolute;
+  &__input {
+    position: fixed;
+    top: -16px;
     left: 50%;
-    transform: translateX(-200%);
+    transform: translate(-50%, -100%);
+    display: inline-block;
+    margin: 1em;
+    max-width: 650px;
+    width: calc(100% - 2em);
+    vertical-align: top;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
 
     &.show {
-      height: 4.8rem;
-      max-width: 74.5rem;
-      width: 100%;
-      padding-left: 3.2rem;
       opacity: 1;
-      position: relative;
-      left: auto;
-      transform: translateX(0);
+      visibility: visible;
+      top: 40%;
+      transform: translate(-50%, -40%);
     }
+
+    &--nao {
+      overflow: hidden;
+      padding-top: 1em;
+    }
+  }
+
+  &__input-field {
+    position: relative;
+    display: block;
+    float: right;
+    padding: 0.8em;
+    width: 60%;
+    border: none;
+    border-radius: 0;
+    background: #f0f0f0;
+    color: $whiteColor;
+    font-weight: 400;
+    -webkit-appearance: none;
 
     &::placeholder {
-      color: rgba($blackColor, 0.2);
+      color: rgba($whiteColor, 0.6);
+      transition: 0.3s;
     }
 
-    @include responsive($large) {
-      display: none;
+    &:focus {
+      outline: none;
+      color: $yellowColor;
+
+      &::placeholder {
+        color: rgba($yellowColor, 0.6);
+      }
     }
+
+    &--nao {
+      padding: 0.5em 0em 0.25em;
+      width: 100%;
+      background: transparent;
+      color: $whiteColor;
+      font-size: 1.25em;
+      transition: 0.3s;
+    }
+  }
+
+  &__graphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: none;
+
+    &--nao {
+      stroke: #ffff;
+      pointer-events: none;
+      -webkit-transition: -webkit-transform 0.7s, stroke 0.7s;
+      transition: transform 0.7s, stroke 0.7s;
+      -webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+      transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+    }
+  }
+
+  &__input-field--nao:focus ~ &__graphic--nao,
+  &__input--filled &__graphic--nao {
+    stroke: #ffcb45;
+    -webkit-transform: translate3d(-66.6%, 0, 0);
+    transform: translate3d(-66.6%, 0, 0);
   }
 
   &__action-icon {

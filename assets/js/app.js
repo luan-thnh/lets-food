@@ -504,11 +504,10 @@ cartGroup.onmouseleave = () => {
 btnSearch.onclick = (e) => {
   e.preventDefault();
 
-  menu.classList.toggle('hide');
   inputSearch.classList.toggle('show');
+  overlay.classList.toggle('show');
 
   inputSearch.focus();
-  inputSearch.value = '';
 };
 
 // Handle click btn sign in & up
@@ -572,6 +571,10 @@ function handleOpenLogin() {
     modelFormRegister.style.display = 'none';
     modelFormRegister.style.opacity = '0';
     modelFormRegister.style.visibility = 'hidden';
+
+    modelFormRegister
+      .querySelectorAll('input')
+      .forEach((input) => (input.value = ''));
   }, 200);
 }
 
@@ -590,6 +593,10 @@ function handleOpenRegis() {
     modelFormLogin.style.display = 'none';
     modelFormLogin.style.opacity = '0';
     modelFormLogin.style.visibility = 'hidden';
+
+    modelFormLogin
+      .querySelectorAll('input')
+      .forEach((input) => (input.value = ''));
   }, 400);
 }
 
@@ -677,4 +684,22 @@ overlay.onclick = () => {
   if (elementModal.classList.contains('open')) {
     elementModal.classList.remove('open');
   }
+
+  if (inputSearch.classList.contains('show')) {
+    inputSearch.classList.remove('show');
+    inputSearch.children[0].value = '';
+  }
+};
+
+// Home introduce parallax
+_$('#home__introduce').onmousemove = (e) => {
+  let x = (window.innerWidth - e.pageX * 2) / 90;
+  let y = (window.innerHeight - e.pageY * 2) / 90;
+
+  _$('#home__introduce-shape1').style.transform = `translate(${x}px, ${y}px)`;
+  _$('#home__introduce-shape2').style.transform = `translate(${x}px, ${y}px)`;
+  _$('#home__introduce-shape3').style.transform = `translate(${x}px, ${y}px)`;
+  _$('#home__introduce-shape4').style.transform = `translate(${x}px, ${y}px)`;
+  _$('#home__introduce-shape5').style.transform = `translate(${x}px, ${y}px)`;
+  _$('#home__introduce-shape6').style.transform = `translate(${x}px, ${y}px)`;
 };
