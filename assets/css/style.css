@@ -2324,7 +2324,7 @@ a {
 }
 @media (max-width: 416px) {
   .home__about-slide {
-    width: 38rem;
+    width: 42rem;
   }
 }
 .home__about-slide .slick-track {
@@ -2492,6 +2492,7 @@ a {
 @media (max-width: 768px) {
   .home__register {
     padding: 4.8rem 4.8rem;
+    margin: 0 1.6rem;
   }
 }
 .home__register--heading {
