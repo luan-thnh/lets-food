@@ -24,12 +24,12 @@ const btnRegister = _$('#btn-register');
 const overlay = _$('.overlay');
 const spinner = _$('.spinner');
 
-const model = _$('#model');
-const modelForm = _$('.model__forms');
-const modelFormLogin = _$('.model__form-login');
-const modelFormRegister = _$('.model__form-register');
-const modelBtnLogin = _$$('.model__btn-login');
-const modelBtnRegister = _$$('.model__btn-register');
+const modal = _$('#modal');
+const modalForm = _$('.modal__forms');
+const modalFormLogin = _$('.modal__form-login');
+const modalFormRegister = _$('.modal__form-register');
+const modalBtnLogin = _$$('.modal__btn-login');
+const modalBtnRegister = _$$('.modal__btn-register');
 const btnOutForm = _$$('#btn-out-form');
 
 const formLogin = _$('#form-login');
@@ -145,7 +145,7 @@ function checkFormLogin(e) {
   e.preventDefault();
 
   if (!checkRequired(inputLogin)) {
-    checkLength(passwordLogin, 6, 25);
+    checkLength(passwordLogin, 8, 25);
     checkEmail(emailLogin);
   }
 }
@@ -656,14 +656,14 @@ btnSearchMobile.onclick = openSearchInput;
 
 // Handle click btn sign in & up
 btnLogin.onclick = () => {
-  model.classList.toggle('show');
+  modal.classList.toggle('show');
   overlay.classList.toggle('show');
 
   handleOpenLogin();
 };
 
 btnLoginMobile.onclick = () => {
-  model.classList.toggle('show');
+  modal.classList.toggle('show');
 
   if (iconMobile.classList.contains('active')) {
     iconMobile.classList.remove('active');
@@ -674,21 +674,21 @@ btnLoginMobile.onclick = () => {
 };
 
 btnRegister.onclick = () => {
-  model.classList.toggle('show');
+  modal.classList.toggle('show');
   overlay.classList.toggle('show');
 
   handleOpenRegis();
 };
 
-modelBtnLogin.forEach((btn) => (btn.onclick = handleOpenLogin));
-modelBtnRegister.forEach((btn) => (btn.onclick = handleOpenRegis));
+modalBtnLogin.forEach((btn) => (btn.onclick = handleOpenLogin));
+modalBtnRegister.forEach((btn) => (btn.onclick = handleOpenRegis));
 
-// Handle close model form
-btnOutForm.forEach((btn) => (btn.onclick = hideModel));
+// Handle close modal form
+btnOutForm.forEach((btn) => (btn.onclick = hidemodal));
 
-function hideModel() {
-  if (model.classList.contains('show')) {
-    model.classList.remove('show');
+function hidemodal() {
+  if (modal.classList.contains('show')) {
+    modal.classList.remove('show');
     handleSwitchForm();
   }
 
@@ -699,61 +699,63 @@ function hideModel() {
   overlay.classList.remove('show');
 }
 
-// Handle open model form
+// Handle open modal form
 function handleOpenLogin() {
-  modelForm.className = 'model__forms model__forms-active-login';
-  modelFormLogin.style.display = 'flex';
-  modelFormRegister.style.opacity = '0';
-  modelFormRegister.style.visibility = 'hidden';
+  modalForm.className = 'modal__forms modal__forms-active-login';
+  modalFormLogin.style.display = 'flex';
+  modalFormRegister.style.opacity = '0';
+  modalFormRegister.style.visibility = 'hidden';
 
   setTimeout(function () {
-    modelFormLogin.style.opacity = '1';
-    modelFormLogin.style.visibility = 'visible';
+    modalFormLogin.style.opacity = '1';
+    modalFormLogin.style.visibility = 'visible';
   }, 400);
 
   setTimeout(function () {
-    modelFormRegister.style.display = 'none';
-    modelFormRegister.style.opacity = '0';
-    modelFormRegister.style.visibility = 'hidden';
+    modalFormRegister.style.display = 'none';
+    modalFormRegister.style.opacity = '0';
+    modalFormRegister.style.visibility = 'hidden';
 
-    modelFormRegister
-      .querySelectorAll('input')
-      .forEach((input) => (input.value = ''));
+    modalFormRegister.querySelectorAll('input').forEach((input) => {
+      input.parentElement.classList.remove('success', 'error');
+      input.value = '';
+    });
   }, 200);
 }
 
 function handleOpenRegis() {
-  modelForm.className = 'model__forms model__forms-active-register';
-  modelFormRegister.style.display = 'flex';
-  modelFormLogin.style.opacity = '0';
-  modelFormLogin.style.visibility = 'hidden';
+  modalForm.className = 'modal__forms modal__forms-active-register';
+  modalFormRegister.style.display = 'flex';
+  modalFormLogin.style.opacity = '0';
+  modalFormLogin.style.visibility = 'hidden';
 
   setTimeout(function () {
-    modelFormRegister.style.opacity = '1';
-    modelFormRegister.style.visibility = 'visible';
+    modalFormRegister.style.opacity = '1';
+    modalFormRegister.style.visibility = 'visible';
   }, 100);
 
   setTimeout(function () {
-    modelFormLogin.style.display = 'none';
-    modelFormLogin.style.opacity = '0';
-    modelFormLogin.style.visibility = 'hidden';
+    modalFormLogin.style.display = 'none';
+    modalFormLogin.style.opacity = '0';
+    modalFormLogin.style.visibility = 'hidden';
 
-    modelFormLogin
-      .querySelectorAll('input')
-      .forEach((input) => (input.value = ''));
+    modalFormLogin.querySelectorAll('input').forEach((input) => {
+      input.parentElement.classList.remove('success', 'error');
+      input.value = '';
+    });
   }, 400);
 }
 
 function handleSwitchForm() {
-  modelForm.className = 'model__forms';
-  modelFormRegister.style.opacity = '0';
-  modelFormLogin.style.opacity = '0';
-  modelFormLogin.style.visibility = 'hidden';
-  modelFormRegister.style.visibility = 'hidden';
+  modalForm.className = 'modal__forms';
+  modalFormRegister.style.opacity = '0';
+  modalFormLogin.style.opacity = '0';
+  modalFormLogin.style.visibility = 'hidden';
+  modalFormRegister.style.visibility = 'hidden';
 
   setTimeout(function () {
-    modelFormRegister.style.display = 'none';
-    modelFormLogin.style.display = 'none';
+    modalFormRegister.style.display = 'none';
+    modalFormLogin.style.display = 'none';
   }, 500);
 }
 
@@ -825,8 +827,8 @@ overlay.onclick = () => {
     cartGroup.classList.remove('show');
   }
 
-  if (model.classList.contains('show')) {
-    model.classList.remove('show');
+  if (modal.classList.contains('show')) {
+    modal.classList.remove('show');
     handleSwitchForm();
   }
 

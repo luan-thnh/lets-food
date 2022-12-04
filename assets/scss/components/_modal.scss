@@ -1,4 +1,4 @@
-.model {
+.modal {
   // display: none !important;
   position: fixed;
   top: 50%;
@@ -131,7 +131,7 @@
         rgba($blackColor, 0.4),
         rgba($blackColor, 0.4)
       ),
-      url('../img/bg-model.jfif');
+      url('../img/bg-modal.jfif');
 
     background-size: cover;
 
@@ -148,6 +148,10 @@
   &__btn-register {
     margin-top: 3.2rem;
     @include btnPrimary($whiteColor);
+    &:hover,
+    &:active {
+      box-shadow: none;
+    }
   }
 
   &__forms-active-register {
