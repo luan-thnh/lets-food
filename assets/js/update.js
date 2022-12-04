@@ -33,6 +33,12 @@ btnBuyCart.onclick = showPopupUpdate;
 
 function showPopupUpdate() {
   updating.classList.add('show');
+
+  if (document.body.clientWidth <= 992 && cart.classList.contains('show')) {
+    cart.classList.remove('show');
+    cartGroup.classList.remove('show');
+    overlay.classList.remove('show');
+  }
 }
 
 updatingTimes.onclick = (e) => {
