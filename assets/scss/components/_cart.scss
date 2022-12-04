@@ -1,7 +1,8 @@
 .cart {
   position: relative;
 
-  &::after {
+  &::after,
+  &::before {
     position: absolute;
     bottom: -4.6rem;
     right: 0.2rem;
@@ -18,7 +19,15 @@
     transition: 0.5s;
   }
 
-  &.show::after {
+  &::before {
+    box-shadow: none;
+    z-index: 5;
+    bottom: -4.5rem;
+    // background-color: red;
+  }
+
+  &.show::after,
+  &.show::before {
     transform: translateY(0) rotate(45deg);
     opacity: 1;
     visibility: visible;

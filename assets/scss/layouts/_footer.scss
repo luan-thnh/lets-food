@@ -25,6 +25,7 @@
   &__left {
     flex: 1;
     padding-bottom: 9rem;
+    align-self: baseline;
 
     p {
       padding-right: 7.2rem;
@@ -34,6 +35,7 @@
     @include responsive($medium) {
       @include dFlexCol;
       align-items: center;
+      align-self: center;
 
       p {
         padding-right: 0;
