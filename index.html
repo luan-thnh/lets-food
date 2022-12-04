@@ -115,6 +115,13 @@
           </div>
 
           <div class="header__list-mobile">
+            <a
+              id="search-mobile"
+              href="#"
+              class="header__action-mobile-icon header__action-mobile-search"
+            >
+              <img src="./assets/img/search.svg" alt="Search icon" />
+            </a>
             <a href="#" class="header__menu-mobile-link">Home</a>
             <a href="#" class="header__menu-mobile-link">Menu</a>
             <a href="#" class="header__menu-mobile-link">How it works</a>
@@ -327,11 +334,23 @@
             <div class="model__img-back">
               <!-- <img src="./assets/img/bg-model.jpg" alt="" /> -->
             </div>
-            <div class="model__form-login">
+            <div id="form-login" class="model__form-login">
               <h2>LOGIN</h2>
-              <input type="text" placeholder="Email" />
-              <input type="password" placeholder="Password" />
-              <button class="model__btn-login">Sign In</button>
+              <div class="model__form-control">
+                <input type="email" placeholder="Email" id="email-login" />
+                <small>Error message</small>
+              </div>
+              <div class="model__form-control">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  id="password-login"
+                />
+                <small>Error message</small>
+              </div>
+              <button id="login-submit" class="model__btn-login">
+                Sign In
+              </button>
               <a href="#!" id="btn-out-form"
                 ><i class="fa-solid fa-arrow-left"></i
               ></a>
@@ -342,13 +361,35 @@
               </div>
             </div>
 
-            <div class="model__form-register">
+            <div id="form-register" class="model__form-register">
               <h2>REGISTER</h2>
-              <input type="text" placeholder="Email" />
-              <input type="text" placeholder="User" />
-              <input type="password" placeholder="Password" />
-              <input type="password" placeholder="Confirm Password" />
-              <button class="model__btn-register">Sign Up</button>
+              <div class="model__form-control">
+                <input type="email" placeholder="Email" id="email-register" />
+                <small>Error message</small>
+              </div>
+              <div class="model__form-control">
+                <input type="text" placeholder="User" id="user-register" />
+                <small>Error message</small>
+              </div>
+              <div class="model__form-control">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  id="password-register"
+                />
+                <small>Error message</small>
+              </div>
+              <div class="model__form-control">
+                <input
+                  type="password"
+                  placeholder="Confirm Password"
+                  id="password-confirm-register"
+                />
+                <small>Error message</small>
+              </div>
+              <button id="register-submit" class="model__btn-register">
+                Sign Up
+              </button>
               <a href="#!" id="btn-out-form"
                 ><i class="fa-solid fa-arrow-left"></i
               ></a>
@@ -391,5 +432,6 @@
     ></script>
 
     <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/form.js"></script>
   </body>
 </html>

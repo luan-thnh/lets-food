@@ -2,6 +2,7 @@ const _$ = document.querySelector.bind(document);
 const _$$ = document.querySelectorAll.bind(document);
 
 const btnSearch = _$('#search');
+const btnSearchMobile = _$('#search-mobile');
 const inputSearch = _$('#input-search');
 const menu = _$('#menu');
 const main = _$('#main');
@@ -31,6 +32,17 @@ const modelBtnLogin = _$$('.model__btn-login');
 const modelBtnRegister = _$$('.model__btn-register');
 const btnOutForm = _$$('#btn-out-form');
 
+const formLogin = _$('#form-login');
+const formRegister = _$('#form-register');
+const emailLogin = _$('#email-login');
+const passwordLogin = _$('#password-login');
+const emailRegister = _$('#email-register');
+const userRegister = _$('#user-register');
+const passwordRegister = _$('#password-register');
+const passwordConfirmRegister = _$('#password-confirm-register');
+const btnLoginSubmit = _$('#login-submit');
+const btnRegisterSubmit = _$('#register-submit');
+
 const header = _$('#header');
 const introduce = _$('.home__introduce');
 const bgScroll = _$('#background-scroll');
@@ -40,6 +52,117 @@ const listMobile = _$('.header__list-mobile');
 const overlayMobile = _$('.header__overlay-mobile');
 const homeAboutSlide = _$('#home__about-slide');
 
+const inputLogin = [emailLogin, passwordLogin];
+const inputRegister = [
+  userRegister,
+  emailRegister,
+  passwordRegister,
+  passwordConfirmRegister,
+];
+
+// Show input error message
+function showError(input, message) {
+  const formControl = input.parentElement;
+  formControl.classList.add('error');
+  formControl.classList.remove('success');
+  const small = formControl.querySelector('small');
+  small.innerText = message;
+}
+
+// Show success outline
+function showSuccess(input) {
+  const formControl = input.parentElement;
+  formControl.classList.add('success');
+  formControl.classList.remove('error');
+}
+
+// Check email is valid
+function checkEmail(input) {
+  const regex =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (regex.test(input.value.trim())) {
+    showSuccess(input);
+  } else {
+    showError(input, 'Email is not valid');
+  }
+}
+
+// Check required fields
+function checkRequired(inputArr) {
+  let isRequired = false;
+  inputArr.forEach(function (input) {
+    if (input.value.trim() === '') {
+      showError(input, `${getFieldName(input)} is required`);
+      isRequired = true;
+    } else {
+      showSuccess(input);
+    }
+  });
+
+  return isRequired;
+}
+
+// Check input length
+function checkLength(input, min, max) {
+  if (input.value.length < min) {
+    showError(
+      input,
+      `${getFieldName(input)} must be at least ${min} characters`
+    );
+  } else if (input.value.length > max) {
+    showError(
+      input,
+      `${getFieldName(input)} must be less than ${max} characters`
+    );
+  } else {
+    showSuccess(input);
+  }
+}
+
+// Check passwords match
+function checkPasswordsMatch(input1, input2) {
+  if (input1.value !== input2.value) {
+    showError(input2, 'Passwords do not match');
+  }
+}
+
+// Get field name
+function getFieldName(input) {
+  const messError = input.id.charAt(0).toUpperCase() + input.id.slice(1);
+  return messError.replace(/-register|-login/, '').replace(/-/g, ' ');
+}
+
+// Handle blur input form
+inputLogin.forEach((input) => (input.onblur = checkFormLogin));
+inputRegister.forEach((input) => (input.onblur = checkFormRegister));
+
+// Handle click button submit form
+btnLoginSubmit.onclick = checkFormLogin;
+btnRegisterSubmit.onclick = checkFormRegister;
+
+// Check form login
+function checkFormLogin(e) {
+  e.preventDefault();
+
+  if (!checkRequired(inputLogin)) {
+    checkLength(passwordLogin, 6, 25);
+    checkEmail(emailLogin);
+  }
+}
+
+// Check form register
+function checkFormRegister(e) {
+  e.preventDefault();
+
+  if (!checkRequired(inputRegister)) {
+    checkLength(userRegister, 3, 15);
+    checkLength(passwordRegister, 8, 25);
+    checkEmail(emailRegister);
+    checkPasswordsMatch(passwordRegister, passwordConfirmRegister);
+  }
+}
+
+// Handle star comments
 function handleStarComments(arr) {
   const groupStarts = _$$('.home__comment-rate');
 
@@ -58,6 +181,7 @@ function handleStarComments(arr) {
   });
 }
 
+// Render comments
 function renderComments(arr) {
   homeAboutSlide.innerHTML = arr
     .map(
@@ -116,6 +240,7 @@ function renderComments(arr) {
   handleStarComments(arr);
 }
 
+// Get API comments
 function getCommentsAPI() {
   fetch('https://6378bce27eb4705cf2733ca1.mockapi.io/comments')
     .then((res) => res.json())
@@ -139,6 +264,7 @@ function getCommentsAPI() {
 
 getCommentsAPI();
 
+// Remove item food in cart
 let count = 0;
 let count2 = 0;
 function removeFoodCart(id) {
@@ -152,6 +278,7 @@ function removeFoodCart(id) {
     arrQuantity.splice(count2 - 1, count2);
     count2 = 0;
   }
+
   // set lại mảng chứa id sản phẩm để check sản phẩm
   if (checkFoodAdded.length != 0) {
     for (let j = 0; j < checkFoodAdded.length; j++) {
@@ -162,8 +289,11 @@ function removeFoodCart(id) {
     checkFoodAdded.splice(count - 1, count);
     count = 0;
   }
-  document.querySelector(`.cart__item${id}`).remove();
+
+  _$(`.cart__item${id}`).remove();
+
   let valueCart = _$('#cart-quantity');
+
   valueCart.innerHTML = `<p>${quantityCurrent - 1}</p>`;
   quantityCurrent -= 1;
   if (quantityCurrent === 0) {
@@ -172,8 +302,8 @@ function removeFoodCart(id) {
 }
 
 // App food in cart list
-var checkFoodAdded = [];
-var checkArr = 0;
+let checkFoodAdded = [];
+let checkArr = 0;
 function addFoodCart({ name, description, price, rate, thumbnail, id }) {
   const cartItem = document.createElement('div');
   cartItem.classList.add('cart__item');
@@ -202,6 +332,7 @@ function addFoodCart({ name, description, price, rate, thumbnail, id }) {
     <i class="fa-solid fa-trash"></i>
   </button>
   `;
+
   if (checkFoodAdded.length == 0) {
     cartList.appendChild(cartItem);
     checkFoodAdded.push(id);
@@ -221,6 +352,7 @@ function addFoodCart({ name, description, price, rate, thumbnail, id }) {
   }
 }
 
+// Get API foods
 function getFoodId(id) {
   fetch(`https://6369c97228cd16bba72454be.mockapi.io/foods/${id}`)
     .then((res) => res.json())
@@ -264,6 +396,7 @@ function cartAdd(id) {
   closeAndOpen();
   getFoodId(id);
 }
+
 // hàm giảm giá trị so luong
 function decrease(price) {
   let valueInputMount = _$('.home__modal-mount--input').value;
@@ -289,6 +422,7 @@ function increase(price) {
   _$('.home__menu-modal--price span').innerText = formatNumber(newPrice);
 }
 
+// Handle blur input mount modal
 function onblurInputMountModal(price) {
   if (_$('.home__modal-mount--input').value == '')
     _$('.home__modal-mount--input').value = 1;
@@ -383,6 +517,7 @@ function showModal(name, desc, price, img, id, rate) {
   }
 }
 
+// Render menu foods
 function renderFood(arr) {
   arr.forEach(({ name, description, thumbnail, price, id, rate }, index) => {
     const cardFood = document.createElement('div');
@@ -430,6 +565,7 @@ function renderFood(arr) {
   });
 }
 
+// Handle click button more menu
 const listFood = [];
 let start = 0;
 let end = 4;
@@ -441,7 +577,7 @@ btnMenu.onclick = (e) => {
   loadingAPI(getFood);
 };
 
-// get food
+// Get API foods
 function getFood() {
   fetch('https://6369c97228cd16bba72454be.mockapi.io/foods')
     .then((res) => res.json())
@@ -462,7 +598,7 @@ function getFood() {
 }
 loadingAPI(getFood);
 
-// Handle Click Btn Like
+// Handle click button like
 function handleClickBtnLike() {
   const btnLikes = _$$('#card-like');
 
@@ -501,14 +637,22 @@ cartGroup.onmouseleave = () => {
 };
 
 //  Handle click btn search
-btnSearch.onclick = (e) => {
+function openSearchInput(e) {
   e.preventDefault();
 
   inputSearch.classList.toggle('show');
   overlay.classList.toggle('show');
 
+  if (iconMobile.classList.contains('active')) {
+    iconMobile.classList.remove('active');
+    listMobile.classList.remove('show');
+    overlay.classList.add('show');
+  }
+
   inputSearch.focus();
-};
+}
+btnSearch.onclick = openSearchInput;
+btnSearchMobile.onclick = openSearchInput;
 
 // Handle click btn sign in & up
 btnLogin.onclick = () => {

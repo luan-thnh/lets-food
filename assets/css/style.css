@@ -450,9 +450,10 @@ a {
   flex-direction: column;
 }
 .model input {
+  display: block;
   margin-top: 3.2rem;
   text-align: left;
-  background-color: transparent;
+  background-color: #ffffff;
   padding: 1.5rem 2.4rem;
   width: 33.8rem;
   border: none;
@@ -460,6 +461,8 @@ a {
   font-size: 1.8rem;
   color: rgba(29, 29, 29, 0.7);
   box-shadow: 0.3rem 0.3rem rgba(255, 203, 69, 0.4), 0.6rem 0.6rem rgba(255, 203, 69, 0.2), -0.1rem -0.1rem rgba(255, 203, 69, 0.4);
+  position: relative;
+  z-index: 2;
   transition: 0.3s;
 }
 .model input:focus {
@@ -475,6 +478,39 @@ a {
   line-height: 3.5rem;
   color: #ffcb45;
   text-shadow: 0.3rem 0.3rem rgba(255, 203, 69, 0.6), 0.6rem 0.6rem rgba(255, 203, 69, 0.4);
+}
+.model__form-control {
+  position: relative;
+}
+.model__form-control small {
+  position: absolute;
+  z-index: 1;
+  bottom: -2.5rem;
+  left: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  transform: translateY(-3.5rem);
+  transition: 0.3s;
+}
+.model__form-control.success input {
+  box-shadow: 0.3rem 0.3rem rgba(6, 255, 77, 0.4), 0.6rem 0.6rem rgba(6, 255, 77, 0.2), -0.1rem -0.1rem rgba(6, 255, 77, 0.4);
+}
+.model__form-control.success small {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-3.5rem);
+}
+.model__form-control.error input {
+  box-shadow: -0.3rem -0.3rem rgba(255, 91, 91, 0.4), -0.6rem -0.6rem rgba(255, 91, 91, 0.2), 0.1rem 0.1rem rgba(255, 91, 91, 0.4);
+}
+.model__form-control.error small {
+  color: #ff5b5b;
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
 }
 .model__form-login > a, .model__form-register > a {
   opacity: 1;
@@ -968,6 +1004,12 @@ a {
   visibility: hidden;
   transition: 0.5s;
 }
+@media (max-width: 768px) {
+  .header__input {
+    width: 100%;
+    margin: 0 1.6rem;
+  }
+}
 .header__input.show {
   opacity: 1;
   visibility: visible;
@@ -1341,6 +1383,16 @@ a {
 }
 .header__action-sign-in-mobile img {
   width: 23px;
+}
+.header__action-mobile-icon {
+  width: 3.8rem;
+  transition: 0.3s;
+}
+.header__action-mobile-icon:hover {
+  transform: translateY(-3px) scale(1.25);
+}
+.header__action-mobile-icon:active {
+  transform: translateY(0) scale(1);
 }
 
 .footer {

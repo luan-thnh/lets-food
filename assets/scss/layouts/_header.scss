@@ -96,6 +96,11 @@
     visibility: hidden;
     transition: 0.5s;
 
+    @include responsive($medium) {
+      width: 100%;
+      margin: 0 1.6rem;
+    }
+
     &.show {
       opacity: 1;
       visibility: visible;
@@ -390,6 +395,19 @@
 
     img {
       width: 23px;
+    }
+  }
+
+  &__action-mobile-icon {
+    width: 3.8rem;
+    transition: 0.3s;
+
+    &:hover {
+      transform: translateY(-3px) scale(1.25);
+    }
+
+    &:active {
+      transform: translateY(0) scale(1);
     }
   }
 }
