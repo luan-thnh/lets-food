@@ -792,6 +792,14 @@ a {
     width: 4.8rem;
   }
   .cart__item-thumbnail img {
+    width: 7.5rem;
+  }
+}
+@media (max-width: 416px) {
+  .cart__item-thumbnail {
+    width: 4.8rem;
+  }
+  .cart__item-thumbnail img {
     width: 6.5rem;
   }
 }
