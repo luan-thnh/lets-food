@@ -476,7 +476,7 @@ function modalContainer(name, desc, price, img, id, rate) {
                   <img src="./assets/img/cart.svg" alt="Cart icon" />
                   <span>Add to cart</span>
                 </button>
-                <button class="home__menu-modal--buyNow">Buy Now</button>
+                <button class="home__menu-modal--buyNow" onclick = "showPopupUpdate()">Buy Now</button>
               </div>
             </div>
             <a href="#!"

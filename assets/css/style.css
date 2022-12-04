@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;600;700&display=swap");
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 *,
 *::after,
 *::before {
@@ -642,6 +643,90 @@ a {
 }
 .spinner div:nth-child(7) {
   transform: translate(-50%, -10.8px) rotate(360deg) translate(0, 320%);
+}
+
+.updating {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99999;
+  background-color: #ffffff;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100px) scale(0.25);
+  transition: 0.5s;
+}
+.updating__times {
+  position: absolute;
+  top: 48px;
+  right: 48px;
+  font-size: 32px;
+  color: rgba(29, 29, 29, 0.7);
+  transition: 0.3s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.updating__times:hover {
+  transform: rotate(90deg) scale(1.15);
+}
+.updating__times:active {
+  transform: rotate(-90deg) scale(1);
+}
+.updating.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+.updating svg {
+  display: block;
+  font: 8em "Montserrat";
+  max-width: 960px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.updating .text-copy {
+  fill: none;
+  stroke: #ffffff;
+  stroke-dasharray: 6% 29%;
+  stroke-width: 5px;
+  stroke-dashoffset: 0%;
+  animation: stroke-offset 5.5s infinite linear;
+}
+.updating .text-copy:nth-child(1) {
+  stroke: rgba(29, 29, 29, 0.7);
+  animation-delay: -1;
+}
+.updating .text-copy:nth-child(2) {
+  stroke: #ffac4b;
+  animation-delay: -2s;
+}
+.updating .text-copy:nth-child(3) {
+  stroke: #ff5b5b;
+  animation-delay: -3s;
+}
+.updating .text-copy:nth-child(4) {
+  stroke: #ff5b5b;
+  animation-delay: -4s;
+}
+.updating .text-copy:nth-child(5) {
+  stroke: #ffcb45;
+  animation-delay: -5s;
+}
+@keyframes stroke-offset {
+  100% {
+    stroke-dashoffset: -35%;
+  }
 }
 
 .cart {
