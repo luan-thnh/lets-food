@@ -800,6 +800,11 @@ function displayMenuOnMobile() {
     overlay.classList.add('show');
   }
 
+  if (inputSearch.classList.contains('show')) {
+    inputSearch.classList.remove('show');
+    inputSearch.children[0].value = '';
+  }
+
   iconMobile.classList.contains('active')
     ? header.setAttribute('style', 'border-color: #ffffff;')
     : header.removeAttribute('style');
