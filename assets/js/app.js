@@ -842,6 +842,7 @@ function displayMenuOnMobile() {
   }
 
   if (inputSearch.classList.contains('show')) {
+    headerSearch.classList.remove('show');
     inputSearch.classList.remove('show');
     inputSearch.children[0].value = '';
   }
