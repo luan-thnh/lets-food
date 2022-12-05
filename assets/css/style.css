@@ -1094,31 +1094,38 @@ a {
     order: 0;
   }
 }
-.header__input {
+.header__search {
+  padding: 1.6rem;
   position: fixed;
-  top: -16px;
+  top: 16px;
   left: 50%;
   transform: translate(-50%, -100%);
+  max-width: 650px;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+.header__search.show {
+  top: 40%;
+  transform: translate(-50%, -40%);
+  opacity: 1;
+  visibility: visible;
+}
+.header__input {
+  position: relative;
   display: inline-block;
   margin: 1em;
   max-width: 650px;
   width: calc(100% - 2em);
   vertical-align: top;
-  opacity: 0;
-  visibility: hidden;
   transition: 0.5s;
 }
 @media (max-width: 768px) {
   .header__input {
     width: 100%;
-    margin: 0 1.6rem;
+    margin: 0;
   }
-}
-.header__input.show {
-  opacity: 1;
-  visibility: visible;
-  top: 40%;
-  transform: translate(-50%, -40%);
 }
 .header__input--nao {
   overflow: hidden;
@@ -1129,7 +1136,6 @@ a {
   display: block;
   float: right;
   padding: 0.8em;
-  width: 60%;
   border: none;
   border-radius: 0;
   background: #f0f0f0;
@@ -1191,6 +1197,80 @@ a {
 }
 .header__action-icon:active {
   transform: translateY(-0.1rem) scale(1);
+}
+.header__product {
+  padding: 0 3.2rem;
+  max-height: 250px;
+  height: 100%;
+  overflow: hidden;
+  background-color: transparent;
+  border-radius: 15px;
+}
+@media (max-width: 992px) {
+  .header__product {
+    max-height: 240px;
+  }
+}
+@media (max-width: 576px) {
+  .header__product {
+    max-height: 250px;
+  }
+}
+.header__product-loading {
+  color: #ffffff;
+}
+.header__product-loading.hide {
+  display: none;
+}
+.header__product-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3.2rem;
+  margin-top: 1.6rem;
+  max-width: 65rem;
+  width: 100%;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.header__product-item img {
+  max-width: 6.5rem;
+  width: 100%;
+  max-height: 4.3rem;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+.header__product-item.hide {
+  opacity: 0;
+  height: 0;
+  width: 0;
+  transform: translateY(5rem);
+  visibility: hidden;
+  margin-top: 0;
+}
+.header__product-detail {
+  max-width: 57.5rem;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.header__product-detail h4 {
+  font-family: "Readex Pro", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  color: #ffffff;
+}
+.header__product-detail p {
+  font-family: "Readex Pro", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  color: #ffcb45;
 }
 .header__action-search {
   position: relative;

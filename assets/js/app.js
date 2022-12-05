@@ -1,6 +1,7 @@
 const _$ = document.querySelector.bind(document);
 const _$$ = document.querySelectorAll.bind(document);
 
+const headerSearch = _$('#header__search');
 const btnSearch = _$('#search');
 const btnSearchMobile = _$('#search-mobile');
 const inputSearch = _$('#input-search');
@@ -52,6 +53,41 @@ const listMobile = _$('.header__list-mobile');
 const overlayMobile = _$('.header__overlay-mobile');
 const homeAboutSlide = _$('#home__about-slide');
 
+const products = _$('#header__product');
+
+// Render product when search
+inputSearch.addEventListener('input', (e) => filterData(e.target.value));
+
+const listItems = [];
+function renderProductFood(arr) {
+  arr.forEach(({ name, description, price, rate, thumbnail, id }) => {
+    const productItem = document.createElement('div');
+    productItem.setAttribute('class', 'header__product-item');
+    listItems.push(productItem);
+
+    productItem.innerHTML = `
+		  <img src="${thumbnail}"  alt=""  />
+      <div class="header__product-detail" onclick ="showModal('${name}', '${description}', ${price},'${thumbnail}','${id}',${rate})">
+        <h4>${name}</h4>
+        <p>${formatNumber(price)} VDN</p>
+      </div>
+        `;
+
+    products.appendChild(productItem);
+  });
+}
+
+function filterData(search) {
+  listItems.forEach((item) => {
+    if (item.innerText.toLowerCase().includes(search.toLowerCase())) {
+      item.classList.remove('hide');
+    } else {
+      item.classList.add('hide');
+    }
+  });
+}
+
+// Show input error message
 const inputLogin = [emailLogin, passwordLogin];
 const inputRegister = [
   userRegister,
@@ -60,7 +96,6 @@ const inputRegister = [
   passwordConfirmRegister,
 ];
 
-// Show input error message
 function showError(input, message) {
   const formControl = input.parentElement;
   formControl.classList.add('error');
@@ -584,6 +619,8 @@ function getFood() {
     .then((data) => {
       renderFood(data.slice(start, end));
 
+      renderProductFood(data);
+
       if (cardList.children.length === data.length) {
         btnMenu.onclick = (e) => {
           e.preventDefault();
@@ -640,6 +677,7 @@ cartGroup.onmouseleave = () => {
 function openSearchInput(e) {
   e.preventDefault();
 
+  headerSearch.classList.toggle('show');
   inputSearch.classList.toggle('show');
   overlay.classList.toggle('show');
 
@@ -651,6 +689,7 @@ function openSearchInput(e) {
 
   inputSearch.focus();
 }
+
 btnSearch.onclick = openSearchInput;
 btnSearchMobile.onclick = openSearchInput;
 
@@ -837,6 +876,7 @@ overlay.onclick = () => {
   }
 
   if (inputSearch.classList.contains('show')) {
+    headerSearch.classList.remove('show');
     inputSearch.classList.remove('show');
     inputSearch.children[0].value = '';
   }

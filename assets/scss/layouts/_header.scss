@@ -82,30 +82,40 @@
     }
   }
 
-  &__input {
+  &__search {
+    padding: 1.6rem;
     position: fixed;
-    top: -16px;
+    top: 16px;
     left: 50%;
     transform: translate(-50%, -100%);
+    max-width: 650px;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+
+    &.show {
+      top: 40%;
+      transform: translate(-50%, -40%);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__input {
+    position: relative;
     display: inline-block;
     margin: 1em;
     max-width: 650px;
     width: calc(100% - 2em);
     vertical-align: top;
-    opacity: 0;
-    visibility: hidden;
+    // opacity: 0;
+    // visibility: hidden;
     transition: 0.5s;
 
     @include responsive($medium) {
       width: 100%;
-      margin: 0 1.6rem;
-    }
-
-    &.show {
-      opacity: 1;
-      visibility: visible;
-      top: 40%;
-      transform: translate(-50%, -40%);
+      margin: 0;
     }
 
     &--nao {
@@ -119,7 +129,6 @@
     display: block;
     float: right;
     padding: 0.8em;
-    width: 60%;
     border: none;
     border-radius: 0;
     background: #f0f0f0;
@@ -188,6 +197,74 @@
 
     &:active {
       transform: translateY(-0.1rem) scale(1);
+    }
+  }
+
+  &__product {
+    padding: 0 3.2rem;
+    max-height: 250px;
+    height: 100%;
+    overflow: hidden;
+    background-color: transparent;
+    border-radius: 15px;
+
+    @include responsive($large) {
+      max-height: 240px;
+    }
+
+    @include responsive($small) {
+      max-height: 250px;
+    }
+  }
+
+  &__product-loading {
+    color: $whiteColor;
+    &.hide {
+      display: none;
+    }
+  }
+
+  &__product-item {
+    @include dFlex(flex-start, $gap: 3.2rem);
+
+    margin-top: 1.6rem;
+    max-width: 65rem;
+    width: 100%;
+    overflow: hidden;
+    transition: 0.3s;
+
+    img {
+      max-width: 6.5rem;
+      width: 100%;
+      max-height: 4.3rem;
+      height: 100%;
+      border-radius: 0.5rem;
+    }
+
+    &.hide {
+      opacity: 0;
+      height: 0;
+      width: 0;
+      transform: translateY(5rem);
+      visibility: hidden;
+      margin-top: 0;
+    }
+  }
+
+  &__product-detail {
+    max-width: 57.5rem;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+
+    h4 {
+      @include headline($whiteColor);
+    }
+
+    p {
+      @include textBody($yellowColor);
     }
   }
 
