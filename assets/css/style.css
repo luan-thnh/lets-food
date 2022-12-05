@@ -1119,7 +1119,15 @@ a {
   max-width: 650px;
   width: calc(100% - 2em);
   vertical-align: top;
-  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10rem);
+  transition: 1.5s;
+}
+.header__input.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 @media (max-width: 768px) {
   .header__input {
@@ -1205,6 +1213,15 @@ a {
   overflow: hidden;
   background-color: transparent;
   border-radius: 15px;
+  transform: translateY(20rem);
+  opacity: 0;
+  visibility: hidden;
+  transition: 1.5s;
+}
+.header__product.show {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
 }
 @media (max-width: 992px) {
   .header__product {

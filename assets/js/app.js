@@ -526,6 +526,8 @@ function modalContainer(name, desc, price, img, id, rate) {
 function closeAndOpen() {
   elementModal.classList.toggle('open');
   overlay.classList.toggle('show');
+
+  if (inputSearch.classList.contains('show')) overlay.classList.add('show');
 }
 
 //  hien thi modal-menu
@@ -550,6 +552,8 @@ function showModal(name, desc, price, img, id, rate) {
     cartGroup.classList.remove('show');
     overlay.classList.toggle('show');
   }
+
+  if (inputSearch.classList.contains('show')) overlay.classList.add('show');
 }
 
 // Render menu foods
@@ -680,6 +684,7 @@ function openSearchInput(e) {
   headerSearch.classList.toggle('show');
   inputSearch.classList.toggle('show');
   overlay.classList.toggle('show');
+  products.classList.toggle('show');
 
   if (iconMobile.classList.contains('active')) {
     iconMobile.classList.remove('active');
