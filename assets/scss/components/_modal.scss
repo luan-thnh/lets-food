@@ -67,7 +67,7 @@
     transition: all 0.5s;
 
     @include responsive($large) {
-      width: 100%;
+      width: 100vh;
       height: 100vh;
       top: 50%;
       left: 50%;
@@ -83,7 +83,7 @@
     transition: all 0.5s;
 
     @include responsive($large) {
-      width: 100%;
+      width: 100vh;
       height: 100vh;
       top: 50%;
       left: 50%;

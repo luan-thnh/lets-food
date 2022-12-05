@@ -285,7 +285,7 @@ a {
 }
 @media (max-width: 992px) {
   .modal__forms-active-login {
-    width: 100%;
+    width: 100vh;
     height: 100vh;
     top: 50%;
     left: 50%;
@@ -301,7 +301,7 @@ a {
 }
 @media (max-width: 992px) {
   .modal__forms-active-register {
-    width: 100%;
+    width: 100vh;
     height: 100vh;
     top: 50%;
     left: 50%;

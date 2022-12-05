@@ -670,11 +670,17 @@ cartBtn.onclick = () => {
     listMobile.classList.remove('show');
     overlay.classList.add('show');
   }
+
+  closeSearchInput('show');
 };
 
 cartGroup.onmouseleave = () => {
   cart.classList.remove('show');
   cartGroup.classList.remove('show');
+
+  if (document.body.clientWidth <= 992) {
+    overlay.classList.remove('show');
+  }
 };
 
 //  Handle click btn search
@@ -692,7 +698,22 @@ function openSearchInput(e) {
     overlay.classList.add('show');
   }
 
+  if (modal.classList.contains('show')) {
+    modal.classList.remove('show');
+    overlay.classList.add('show');
+  }
+
   inputSearch.focus();
+}
+
+function closeSearchInput(show) {
+  if (inputSearch.classList.contains('show')) {
+    headerSearch.classList.remove('show');
+    inputSearch.classList.remove('show');
+    products.classList.remove('show');
+    inputSearch.children[0].value = '';
+    overlay.classList.add(show || '');
+  }
 }
 
 btnSearch.onclick = openSearchInput;
@@ -702,6 +723,8 @@ btnSearchMobile.onclick = openSearchInput;
 btnLogin.onclick = () => {
   modal.classList.toggle('show');
   overlay.classList.toggle('show');
+
+  closeSearchInput('show');
 
   handleOpenLogin();
 };
@@ -728,9 +751,9 @@ modalBtnLogin.forEach((btn) => (btn.onclick = handleOpenLogin));
 modalBtnRegister.forEach((btn) => (btn.onclick = handleOpenRegis));
 
 // Handle close modal form
-btnOutForm.forEach((btn) => (btn.onclick = hidemodal));
+btnOutForm.forEach((btn) => (btn.onclick = hideModal));
 
-function hidemodal() {
+function hideModal() {
   if (modal.classList.contains('show')) {
     modal.classList.remove('show');
     handleSwitchForm();
@@ -846,11 +869,7 @@ function displayMenuOnMobile() {
     overlay.classList.add('show');
   }
 
-  if (inputSearch.classList.contains('show')) {
-    headerSearch.classList.remove('show');
-    inputSearch.classList.remove('show');
-    inputSearch.children[0].value = '';
-  }
+  closeSearchInput('show');
 
   iconMobile.classList.contains('active')
     ? header.setAttribute('style', 'border-color: #ffffff;')
@@ -881,11 +900,7 @@ overlay.onclick = () => {
     elementModal.classList.remove('open');
   }
 
-  if (inputSearch.classList.contains('show')) {
-    headerSearch.classList.remove('show');
-    inputSearch.classList.remove('show');
-    inputSearch.children[0].value = '';
-  }
+  closeSearchInput();
 };
 
 // Home introduce parallax
