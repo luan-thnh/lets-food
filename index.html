@@ -42,11 +42,11 @@
         </div>
 
         <div id="menu" class="header__menu">
-          <a href="#" class="header__menu-link">Home</a>
-          <a href="#" class="header__menu-link">Menu</a>
-          <a href="#" class="header__menu-link">How it works</a>
-          <a href="#" class="header__menu-link">About</a>
-          <a href="#" class="header__menu-link">Contact</a>
+          <a href="#home__introduce" class="header__menu-link">Home</a>
+          <a href="#home__menu" class="header__menu-link">Menu</a>
+          <a href="#home__serve" class="header__menu-link">How it works</a>
+          <a href="#home__about" class="header__menu-link">About</a>
+          <a href="#footer" class="header__menu-link">Contact</a>
         </div>
 
         <div id="header__search" class="header__search">
@@ -121,16 +121,18 @@
           <div class="header__list-mobile">
             <a
               id="search-mobile"
-              href="#"
+              href="#home__introduce"
               class="header__action-mobile-icon header__action-mobile-search"
             >
               <img src="./assets/img/search.svg" alt="Search icon" />
             </a>
             <a href="#" class="header__menu-mobile-link">Home</a>
-            <a href="#" class="header__menu-mobile-link">Menu</a>
-            <a href="#" class="header__menu-mobile-link">How it works</a>
-            <a href="#" class="header__menu-mobile-link">About</a>
-            <a href="#" class="header__menu-mobile-link">Contact</a>
+            <a href="#home__menu" class="header__menu-mobile-link">Menu</a>
+            <a href="#home__serve" class="header__menu-mobile-link"
+              >How it works</a
+            >
+            <a href="#home__menu" class="header__menu-mobile-link">About</a>
+            <a href="#footer" class="header__menu-mobile-link">Contact</a>
             <button id="btn-login-mobile" class="header__action-sign-in-mobile">
               <img src="./assets/img/sign-in.svg" alt="Sign in icon" />
               <p>Sign in</p>
@@ -142,7 +144,7 @@
       <!-- Main -->
       <main id="main" class="home__main">
         <!-- Introduce -->
-        <div id="home__introduce" class="home__introduce container-full">
+        <section id="home__introduce" class="home__introduce container-full">
           <div class="home__introduce-content">
             <h3 class="home__introduce--heading">
               Be The Fastest In Delivery Your <span>Food</span>
@@ -176,10 +178,10 @@
           <div id="home__introduce-shape6" class="ellipse ellipse4">
             <img src="./assets/img/ellipse.png" alt="" />
           </div>
-        </div>
+        </section>
 
         <!-- Serve -->
-        <div class="home__serve container">
+        <section id="home__serve" class="home__serve container">
           <p class="home__serve--title">How it works</p>
           <h4 class="home__serve--heading">What We Serve</h4>
           <p class="home__serve--desc">
@@ -188,7 +190,7 @@
           </p>
 
           <div class="home__serve-list">
-            <div class="home__serve-item">
+            <div class="home__serve-item hide">
               <div class="home__serve-item-img">
                 <img src="./assets/img/order.png" alt="Order" />
               </div>
@@ -198,7 +200,7 @@
                 You only order through the app
               </p>
             </div>
-            <div class="home__serve-item">
+            <div class="home__serve-item hide">
               <div class="home__serve-item-img">
                 <img src="./assets/img/delivery.png" alt="Delivery" />
               </div>
@@ -206,7 +208,7 @@
               <h5 class="home__serve-item--heading">Fastest Delivery</h5>
               <p class="home__serve-item--text">Delivery will be on time</p>
             </div>
-            <div class="home__serve-item">
+            <div class="home__serve-item hide">
               <div class="home__serve-item-img">
                 <img src="./assets/img/courier.png" alt="Courier" />
               </div>
@@ -217,10 +219,10 @@
               </p>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- Menu -->
-        <div class="home__menu container">
+        <section id="home__menu" class="home__menu container">
           <p class="home__menu--title">Our menu</p>
           <h4 class="home__menu--heading">Our Popular Menu</h4>
           <p class="home__menu--desc">
@@ -230,18 +232,18 @@
           <div id="card-list" class="home__card-list"></div>
 
           <button id="btn-menu" class="home__menu--btn">More Menu</button>
-        </div>
+        </section>
 
         <!-- modal-menu -->
         <div class="home__menu-modal"></div>
 
         <!-- About -->
-        <div class="home__about container">
-          <div class="home__about-picture">
+        <section id="home__about" class="home__about container">
+          <div class="home__about-picture hide">
             <img src="./assets/img/food-about.png" alt="" />
           </div>
 
-          <div class="home__about-content">
+          <div class="home__about-content hide">
             <p class="home__about--title">What the say</p>
             <h5 class="home__about--heading">
               What Our Customers Say About Us
@@ -249,7 +251,7 @@
 
             <div id="home__about-slide" class="home__about-slide"></div>
           </div>
-        </div>
+        </section>
 
         <!-- Sign Up -->
         <div id="background-scroll" class="home__register">

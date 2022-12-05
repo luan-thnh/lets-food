@@ -56,12 +56,21 @@
       transition: 0.3s;
     }
 
-    &:hover {
+    &.active {
       color: $blackColor;
 
       &::after {
         width: 100%;
         opacity: 1;
+      }
+    }
+
+    &:hover {
+      color: rgba($blackColor, 0.9);
+
+      &::after {
+        width: 60%;
+        opacity: 0.8;
       }
     }
 
@@ -99,6 +108,11 @@
       transform: translate(-50%, -40%);
       opacity: 1;
       visibility: visible;
+
+      @include responsive($small) {
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 

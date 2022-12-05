@@ -55,6 +55,9 @@ const homeAboutSlide = _$('#home__about-slide');
 
 const products = _$('#header__product');
 
+const sections = _$$('section[id]');
+const footer = _$('footer[id]');
+
 // Render product when search
 inputSearch.addEventListener('input', (e) => filterData(e.target.value));
 
@@ -855,7 +858,44 @@ function formatNumber(num) {
 window.onscroll = () => {
   header.classList.toggle('sticky', window.scrollY > 80);
   introduce.classList.toggle('change', window.scrollY > 80);
+
+  navHighlighter();
 };
+
+const sectionsId = [...sections, footer];
+
+function navHighlighter() {
+  let scrollY = window.pageYOffset;
+
+  sectionsId.forEach((current) => {
+    const sectionHeight = current.offsetHeight;
+    const sectionTop = current.offsetTop - 50;
+    const sectionId = current.getAttribute('id');
+
+    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      document
+        .querySelector('#menu a[href*=' + sectionId + ']')
+        .classList.add('active');
+    } else {
+      document
+        .querySelector('#menu a[href*=' + sectionId + ']')
+        .classList.remove('active');
+    }
+  });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    console.log(entry);
+
+    entry.isIntersecting
+      ? entry.target.classList.add('fade')
+      : entry.target.classList.remove('fade');
+  });
+});
+
+const hidesAll = _$$('.hide');
+hidesAll.forEach((el) => observer.observe(el));
 
 // Mobile
 function displayMenuOnMobile() {
