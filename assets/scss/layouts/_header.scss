@@ -285,10 +285,10 @@
   &__product-detail {
     max-width: 57.5rem;
     width: 100%;
-    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
 
     h4 {
       @include headline($whiteColor);
