@@ -43,6 +43,8 @@ const passwordRegister = _$('#password-register');
 const passwordConfirmRegister = _$('#password-confirm-register');
 const btnLoginSubmit = _$('#login-submit');
 const btnRegisterSubmit = _$('#register-submit');
+const eyeIcons = _$$('.modal__eye');
+const eyeSlashIcons = _$$('.modal__eye-slash');
 
 const header = _$('#header');
 const introduce = _$('.home__introduce');
@@ -199,6 +201,26 @@ function checkFormRegister(e) {
     checkPasswordsMatch(passwordRegister, passwordConfirmRegister);
   }
 }
+
+// Handler click show password
+eyeSlashIcons.forEach(
+  (eyeSlashIcon, index) =>
+    (eyeSlashIcon.onclick = () => {
+      eyeSlashIcon.style.display = 'none';
+      eyeIcons[index].style.display = 'block';
+      eyeSlashIcon.parentElement.children[0].type = 'text';
+    })
+);
+
+// Handler click hide password
+eyeIcons.forEach(
+  (eyeIcon, index) =>
+    (eyeIcon.onclick = () => {
+      eyeIcon.style.display = 'none';
+      eyeSlashIcons[index].style.display = 'block';
+      eyeIcon.parentElement.children[0].type = 'password';
+    })
+);
 
 // Handle star comments
 function handleStarComments(arr) {

@@ -597,6 +597,16 @@ a {
 .modal__form-footer-mobile button::after, .modal__form-footer-mobile button::before {
   display: none;
 }
+.modal__eye, .modal__eye-slash {
+  position: absolute;
+  top: 60%;
+  right: 1.6rem;
+  z-index: 3;
+  color: rgba(29, 29, 29, 0.7);
+}
+.modal__eye {
+  display: none;
+}
 
 .loading {
   position: fixed;
@@ -1261,7 +1271,7 @@ a {
 }
 @media (max-width: 992px) {
   .header__product {
-    max-height: 240px;
+    max-height: 225px;
   }
 }
 @media (max-width: 576px) {
@@ -1304,10 +1314,6 @@ a {
 .header__product-detail {
   max-width: 57.5rem;
   width: 100%;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 .header__product-detail h4 {
   font-family: "Readex Pro", Arial, Helvetica, sans-serif;
@@ -1316,6 +1322,10 @@ a {
   font-size: 2rem;
   line-height: 2.5rem;
   color: #ffffff;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .header__product-detail p {
   font-family: "Readex Pro", Arial, Helvetica, sans-serif;

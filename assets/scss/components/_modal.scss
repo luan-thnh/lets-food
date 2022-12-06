@@ -333,4 +333,17 @@
       }
     }
   }
+
+  &__eye,
+  &__eye-slash {
+    position: absolute;
+    top: 60%;
+    right: 1.6rem;
+    z-index: 3;
+    color: $grayColor;
+  }
+
+  &__eye {
+    display: none;
+  }
 }

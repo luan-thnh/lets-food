@@ -240,7 +240,7 @@
     }
 
     @include responsive($large) {
-      max-height: 240px;
+      max-height: 225px;
     }
 
     @include responsive($small) {
@@ -285,13 +285,14 @@
   &__product-detail {
     max-width: 57.5rem;
     width: 100%;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 
     h4 {
       @include headline($whiteColor);
+
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     p {
