@@ -65,22 +65,23 @@ inputSearch.addEventListener('input', (e) => filterData(e.target.value));
 
 const listItems = [];
 function renderProductFood(arr) {
-  arr.forEach(({ name, description, price, rate, thumbnail, id }) => {
-    const productItem = document.createElement('div');
-    productItem.setAttribute('class', 'header__product-item');
-
-    if (listItems.length <= arr.length - 1) listItems.push(productItem);
-
-    productItem.innerHTML = `
-    <img src="${thumbnail}"  alt=""  />
-    <div class="header__product-detail" onclick ="showModal('${name}', '${description}', ${price},'${thumbnail}','${id}',${rate})">
-    <h4>${name}</h4>
-    <p>${formatNumber(price)}</p>
+  products.innerHTML = arr
+    .map(
+      ({ name, description, price, rate, thumbnail, id }) =>
+        `
+    <div class="header__product-item">
+		  <img src="${thumbnail}"  alt=""  />
+      <div class="header__product-detail" onclick ="showModal('${name}', '${description}', ${price},'${thumbnail}','${id}',${rate})">
+        <h4>${name}</h4>
+        <p>${formatNumber(price)}</p>
+      </div>
     </div>
-    `;
+        `
+    )
+    .join('');
 
-    products.appendChild(productItem);
-  });
+  const productItem = _$$('.header__product-item');
+  listItems.push(...productItem);
 }
 
 function filterData(search) {
