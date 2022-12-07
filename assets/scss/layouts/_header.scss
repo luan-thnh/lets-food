@@ -285,6 +285,12 @@
   &__product-detail {
     max-width: 57.5rem;
     width: 100%;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
 
     h4 {
       @include headline($whiteColor);

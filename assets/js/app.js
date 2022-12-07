@@ -68,15 +68,16 @@ function renderProductFood(arr) {
   arr.forEach(({ name, description, price, rate, thumbnail, id }) => {
     const productItem = document.createElement('div');
     productItem.setAttribute('class', 'header__product-item');
-    listItems.push(productItem);
+
+    if (listItems.length <= arr.length - 1) listItems.push(productItem);
 
     productItem.innerHTML = `
-		  <img src="${thumbnail}"  alt=""  />
-      <div class="header__product-detail" onclick ="showModal('${name}', '${description}', ${price},'${thumbnail}','${id}',${rate})">
-        <h4>${name}</h4>
-        <p>${formatNumber(price)} VDN</p>
-      </div>
-        `;
+    <img src="${thumbnail}"  alt=""  />
+    <div class="header__product-detail" onclick ="showModal('${name}', '${description}', ${price},'${thumbnail}','${id}',${rate})">
+    <h4>${name}</h4>
+    <p>${formatNumber(price)}</p>
+    </div>
+    `;
 
     products.appendChild(productItem);
   });
@@ -908,8 +909,6 @@ function navHighlighter() {
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    console.log(entry);
-
     entry.isIntersecting
       ? entry.target.classList.add('fade')
       : entry.target.classList.remove('fade');
