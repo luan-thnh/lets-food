@@ -1,3 +1,3 @@
 # lets-food
 
-https://luan-thanhh.github.io/lets-food/
+https://luan-thnh.github.io/lets-food/
